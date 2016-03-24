@@ -1,0 +1,28 @@
+%h1= "Add New User"
+-if @error
+	%p.error= @error
+%form{ :action => "/user/new", :method => "post" }
+	%input{ :type => "hidden", :name => "authenticity_token", :value => @csrf_token}
+	%fieldset
+		%legend= "Info"
+		%input{ :type => "text", :name => "user[first_name]", :placeholder => "First Name", :required => true} *
+		%input{ :type => "text", :name => "user[last_name]", :placeholder => "Last Name", :required => true} *
+
+	%fieldset
+		%legend= "Address(es)"
+		%input{ :type => "text", :name => "addresses[][street]", :placeholder => "Street"}
+		%input{ :type => "text", :name => "addresses[][city]", :placeholder => "City"}
+		%input{ :type => "text", :name => "addresses[][state]", :placeholder => "State", :pattern => "[A-Za-z]{2}"}
+		%input{ :type => "text", :name => "addresses[][zip_code]", :placeholder => "Zip Code", :pattern => "\d{5}"}
+
+
+	%fieldset
+		%legend= "Phone Number(s)"
+		%input{ :type => "text", :name => "phone_numbers[][area_code]", :placeholder => "Area Code", :pattern => "\d{3}"}
+		%input{ :type => "text", :name => "phone_numbers[][phone_number]", :placeholder => "Phone Number", :pattern => "\d{3}[-]\d(4)"}
+
+	%fieldset
+		%legend= "Email Address(es)"
+		%input{ :type => "email", :name => "email_addresses[][email_address]", :placeholder => "Email Address" }
+
+	%input{ :type => "submit", :value => "Submit"}

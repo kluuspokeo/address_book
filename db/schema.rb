@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20160324172054) do
   add_index "email_addresses", ["user_id"], name: "index_email_addresses_on_user_id", using: :btree
 
   create_table "phone_numbers", force: true do |t|
-    t.integer  "country_code"
+    t.integer  "area_code"
     t.integer  "phone_number"
-    t.integer  "label"
+    t.string   "label",        limit: 6, default: "none"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

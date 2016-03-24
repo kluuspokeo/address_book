@@ -19,13 +19,13 @@
 %table.phone_numbers{ :border => 1, :width => "100%", :class => @addreses.blank? && "empty"}
 	%thead
 		%tr
-			%th= "Country Code"
+			%th= "Area Code"
 			%th= "Phone Number"
 			%th= "Label"
 	%tbody
 		- @phone_numbers.each do|phone_number|
 			%tr.phone_number
-				%td= phone_number.country_code
+				%td= phone_number.area_code
 				%td= phone_number.phone_number
 				%td= phone_number.label
 

@@ -6,8 +6,8 @@
 		- @users.each do|user|
 			%tr.user
 				%td{ :data => { :user_id => user.id}}
-					=link_to user.first_name+" "+user.last_name, "/users/"+user.id.to_s
+					=link_to user.first_name+" "+user.last_name, user
 
 
 
-%a= link_to "Add New User", new_user_url, :title => 'Add New User'
+%a= link_to "Add New User", new_user_path, :title => 'Add New User'
