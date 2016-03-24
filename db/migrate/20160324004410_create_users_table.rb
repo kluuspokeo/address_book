@@ -1,5 +1,5 @@
 class CreateUsersTable < ActiveRecord::Migration
-  def change
+  def up
     create_table :users_tables do |t|
     	t.string :first_name
       	t.string :last_name

@@ -21,12 +21,16 @@ ActiveRecord::Schema.define(version: 20160324004430) do
     t.integer "zip_code"
   end
 
+  add_index "address_tables", ["user_id"], name: "index_address_tables_on_user_id", using: :btree
+
   create_table "emails_tables", force: true do |t|
     t.integer  "user_id"
     t.text     "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "emails_tables", ["user_id"], name: "index_emails_tables_on_user_id", using: :btree
 
   create_table "phone_numbers_tables", force: true do |t|
     t.integer  "user_id"
@@ -36,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160324004430) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "phone_numbers_tables", ["user_id"], name: "index_phone_numbers_tables_on_user_id", using: :btree
 
   create_table "users_tables", force: true do |t|
     t.string   "first_name"
