@@ -1,0 +1,13 @@
+%table.users{ :border => 1, :width => "100%", :class => @users.blank? && "empty"}
+	%thead
+		%tr
+			%th= "Name"
+	%tbody
+		- @users.each do|user|
+			%tr.user
+				%td{ :data => { :user_id => user.id}}
+					=link_to user.first_name+" "+user.last_name, "/users/"+user.id.to_s
+
+
+
+%a= link_to "Add New User", new_user_url, :title => 'Add New User'

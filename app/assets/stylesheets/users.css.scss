@@ -1,0 +1,10 @@
+.users {
+
+}
+.users .user:nth-child(even) {
+	background-color:#aaa;
+}
+table.empty:after {
+	width:100%;
+	content: "No Entries Detected";
+}
