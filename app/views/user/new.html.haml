@@ -1,7 +1,7 @@
 %h1= "Add New User"
 
 %form.new_user_form{ :action => "/user", :method => "post"}
-	%fieldset.error{:class => @errors.blank? && "empty"}
+	%fieldset.error{:class => @error.blank? && "empty"}
 		%legend="Error"
 		%p= @error
 	%input{ :type => "hidden", :name => "authenticity_token", :value => @csrf_token}
@@ -32,20 +32,20 @@
 		%input{ :type => "text", :name => "addresses[][city]", :placeholder => "City"}
 		%input{ :type => "text", :name => "addresses[][state]", :placeholder => "State", :pattern => "[A-Za-z]{2}"}
 		%input{ :type => "text", :name => "addresses[][zip_code]", :placeholder => "Zip Code", :pattern => "\\d{5}"}
-		/ %a.close{:href => "#"}= "x"
+		%a.close{:href => "#"}= "x"
 		%hr
 
 %script{ :type => "type/html",  :id => "phone_number_template"}
 	%div
 		%input{ :type => "text", :name => "phone_numbers[][area_code]", :placeholder => "Area Code", :pattern => "\\d{3}"}
 		%input{ :type => "text", :name => "phone_numbers[][phone_number]", :placeholder => "Phone Number", :pattern => "\\d{7}"}
-		/ %a.close{:href => "#"}= "x"
+		%a.close{:href => "#"}= "x"
 		%hr
 
 %script{ :type => "type/html",  :id => "email_address_template"}
 	%div
 		%input{ :type => "email", :name => "email_addresses[][email_address]", :placeholder => "Email Address" }
-		/ %a.close{:href => "#"}= "x"
+		%a.close{:href => "#"}= "x"
 		%hr
 
 

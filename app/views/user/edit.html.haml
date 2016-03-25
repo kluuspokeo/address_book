@@ -1,49 +1,78 @@
-%h1= "Edit User"
+%h1= @user.first_name+" "+@user.last_name
+%h2= "Addresses"
+%table.addresses{ :border => 1, :width => "100%"}
+	%thead
+		%tr
+			%th= "Street"
+			%th= "City"
+			%th= "State"
+			%th= "Zip Code"
+			%th= "Action"
+	%tbody
+		- @addresses.each do|address|
+			%tr.address
+				%td= address.street
+				%td= address.city
+				%td= address.state
+				%td= address.zip_code
+				%td
+					%a.delete{:href => "#", :data=>{:type => "address", :id => address.id}}= "x"
+		%tr.edit_fields{:data => {:type => "address", :user_id => @user.id}}
+			%td
+				%input.street{:placeholder => "Street"}
+			%td 
+				%input.city{:placeholder => "City"}
+			%td
+				%input.state{:placeholder => "State"}
+			%td
+				%input.zip_code{:placeholder => "Zip Code"}
+			%td
+				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
 
-%form.new_user_form{ :action => "/user/"+@user.id.to_s, :method => "put"}
-	%fieldset.error{:class => @error.blank? && "empty"}
-		%legend="Error"
-		%p= @error
-	%input{ :type => "hidden", :name => "authenticity_token", :value => @csrf_token}
-	%h2= @user.first_name+" "+@user.last_name
+%h2= "Phone Numbers"
+%table.phone_numbers{ :border => 1, :width => "100%", :class => @phone_numbers.blank? && "empty"}
+	%thead
+		%tr
+			%th= "Area Code"
+			%th= "Phone Number"
+			%th= "Label"
+			%th= "Action"
+	%tbody
+		- @phone_numbers.each do|phone_number|
+			%tr.phone_number
+				%td= phone_number.area_code
+				%td= phone_number.phone_number
+				%td= phone_number.label
+				%td
+					%a.delete{:href => "#", :data=>{:type => "phone_number", :id => phone_number.id}}= "x"
+		%tr.edit_fields{:data => {:type => "phone_number", :user_id => @user.id}}
+			%td
+				%input.area_code{:placeholder => "Area Code"}
+			%td
+				%input.phone_number{:placeholder => "Phone Number"}
+			%td
+				%input.label{:placeholder => "Label"}
+			%td
+				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
 
-	%fieldset
-		%legend= "Address(es)"
-		%a.add{:href => "#", :data => {:template => "address_template"}}= "Add Address"
+%h2= "Email Addresses"
+%table.email_addresses{ :border => 1, :width => "100%", :class => @email_addresses.blank? && "empty"}
+	%thead
+		%tr
+			%th= "Email Address"
+			%th= "Action"
+	%tbody
+		- @email_addresses.each do|email_address|
+			%tr.email_address
+				%td= email_address.email_address
+				%td
+					%a.delete{:href => "#", :data=>{:type => "email_address", :id => email_address.id}}= "x"
+		%tr.edit_fields{:data => {:type => "email_address", :user_id => @user.id}}
+			%td
+				%input.email_address{:placeholder => "Email"}
+			%td
+				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
 
+= link_to "Back", user_index_url, :title => 'Back'
 
-	%fieldset
-		%legend= "Phone Number(s)"
-		%a.add{:href => "#", :data => {:template => "phone_number_template"}}= "Add Phone Number"
-
-	%fieldset
-		%legend= "Email Address(es)"
-		%a.add{:href => "#", :data => {:template => "email_address_template"}}= "Add Email Address"
-
-	%input{ :type => "submit", :value => "Submit"}
-
-
-%script{ :type => "type/html", :id => "address_template"}
-	%div
-		%input{ :type => "text", :name => "addresses[][street]", :placeholder => "Street"}
-		%input{ :type => "text", :name => "addresses[][city]", :placeholder => "City"}
-		%input{ :type => "text", :name => "addresses[][state]", :placeholder => "State", :pattern => "[A-Za-z]{2}"}
-		%input{ :type => "text", :name => "addresses[][zip_code]", :placeholder => "Zip Code", :pattern => "\d{5}"}
-		/ %a.close{:href => "#"}= "x"
-		%hr
-
-%script{ :type => "type/html",  :id => "phone_number_template"}
-	%div
-		%input{ :type => "text", :name => "phone_numbers[][area_code]", :placeholder => "Area Code", :pattern => "\d{3}"}
-		%input{ :type => "text", :name => "phone_numbers[][phone_number]", :placeholder => "Phone Number", :pattern => "\d{3}[-]\d(4)"}
-		/ %a.close{:href => "#"}= "x"
-		%hr
-
-%script{ :type => "type/html",  :id => "email_address_template"}
-	%div
-		%input{ :type => "email", :name => "email_addresses[][email_address]", :placeholder => "Email Address" }
-		/ %a.close{:href => "#"}= "x"
-		%hr
-
-
-= link_to "Back", user_index_url
+= link_to "Delete User", @user, method: :delete
