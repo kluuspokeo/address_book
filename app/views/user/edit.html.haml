@@ -1,14 +1,11 @@
-%h1= "Add New User"
+%h1= "Edit User"
 
-%form.new_user_form{ :action => "/user", :method => "post"}
-	%fieldset.error{:class => @errors.blank? && "empty"}
+%form.new_user_form{ :action => "/user/"+@user.id.to_s, :method => "put"}
+	%fieldset.error{:class => @error.blank? && "empty"}
 		%legend="Error"
 		%p= @error
 	%input{ :type => "hidden", :name => "authenticity_token", :value => @csrf_token}
-	%fieldset
-		%legend= "User"
-		%input{ :type => "text", :name => "user[first_name]", :placeholder => "First Name", :required => true} *
-		%input{ :type => "text", :name => "user[last_name]", :placeholder => "Last Name", :required => true} *
+	%h2= @user.first_name+" "+@user.last_name
 
 	%fieldset
 		%legend= "Address(es)"
@@ -31,14 +28,14 @@
 		%input{ :type => "text", :name => "addresses[][street]", :placeholder => "Street"}
 		%input{ :type => "text", :name => "addresses[][city]", :placeholder => "City"}
 		%input{ :type => "text", :name => "addresses[][state]", :placeholder => "State", :pattern => "[A-Za-z]{2}"}
-		%input{ :type => "text", :name => "addresses[][zip_code]", :placeholder => "Zip Code", :pattern => "\\d{5}"}
+		%input{ :type => "text", :name => "addresses[][zip_code]", :placeholder => "Zip Code", :pattern => "\d{5}"}
 		/ %a.close{:href => "#"}= "x"
 		%hr
 
 %script{ :type => "type/html",  :id => "phone_number_template"}
 	%div
-		%input{ :type => "text", :name => "phone_numbers[][area_code]", :placeholder => "Area Code", :pattern => "\\d{3}"}
-		%input{ :type => "text", :name => "phone_numbers[][phone_number]", :placeholder => "Phone Number", :pattern => "\\d{7}"}
+		%input{ :type => "text", :name => "phone_numbers[][area_code]", :placeholder => "Area Code", :pattern => "\d{3}"}
+		%input{ :type => "text", :name => "phone_numbers[][phone_number]", :placeholder => "Phone Number", :pattern => "\d{3}[-]\d(4)"}
 		/ %a.close{:href => "#"}= "x"
 		%hr
 

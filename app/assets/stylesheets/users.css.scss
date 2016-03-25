@@ -1,9 +1,23 @@
 .users {
-
+	.user:nth-child(even) {
+		background-color:#ddd;
+	}
 }
-.users .user:nth-child(even) {
-	background-color:#aaa;
+.error {
+	color:red;
+	border-color:red;
+	&.empty {
+		display: none;
+	}
 }
+.delete {
+	color:red;
+}
+.new_user_form .close {
+	float:right;
+	text-decoration:none;
+	color:grey;
+}	
 table.empty:after {
 	width:100%;
 	content: "No Entries Detected";

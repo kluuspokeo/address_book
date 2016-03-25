@@ -1,13 +1,21 @@
+
+%a= link_to "Add New User", new_user_path, :title => 'Add New User'
+
 %table.users{ :border => 1, :width => "100%", :class => @users.blank? && "empty"}
 	%thead
 		%tr
-			%th= "Name"
+			%th= "Id"
+			%th= "First Name"
+			%th= "Last Name"
+			%th= "Last Updated"
+			%th= "Delete"
 	%tbody
 		- @users.each do|user|
-			%tr.user
-				%td{ :data => { :user_id => user.id}}
-					=link_to user.first_name+" "+user.last_name, user
+			%tr.user{ :data => { :user_id => user.id}}
+				%td= link_to user.id, user
+				%td= user.first_name
+				%td= user.last_name
+				%td= user.updated_at.strftime("%m-%d-%Y %I:%M %p")
+				%td= link_to "x", user, method: :delete
 
 
-
-%a= link_to "Add New User", new_user_path, :title => 'Add New User'

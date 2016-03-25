@@ -13,22 +13,36 @@ protect_from_forgery :except => :create
 			new_user = User.new(user_params)
 			User.transaction do
 				new_user.save!
-
-				params[:email_addresses].each { |email_address|
-					new_user.email_address.create!(email_address.permit(:email_address))
-				}
-				params[:phone_numbers].each { |phone_number|
-					new_user.phone_numbers.create!(phone_number.permit(:area_code, :phone_number))
-				}
-				params[:addresses].each {|address|
-					new_user.address.create!(address.permit(:street, :city, :state, :zip_code))
-				}
+				if !params[:email_address].blank?
+					params[:email_addresses].each { |email_address|
+						new_user.email_address.create!(email_address.permit(:email_address))
+					}
+				end
+				if !params[:phone_numbers].blank?
+					params[:phone_numbers].each { |phone_number|
+						new_user.phone_numbers.create!(phone_number.permit(:area_code, :phone_number))
+					}
+				end
+				if !params[:addresses].blank?
+					params[:addresses].each {|address|
+						new_user.address.create!(address.permit(:street, :city, :state, :zip_code))
+					}
+				end
 			end
 		rescue Exception => e
 			@error = e.message
+			render 'new'
+			return
 		end
-		render 'new'
+		redirect_to new_user
 	end
+
+	def edit
+		show
+		render 'edit'
+	end
+
+
 
 	def show
 		@user = User.find(params[:id])
@@ -39,6 +53,10 @@ protect_from_forgery :except => :create
 		end
 	end
 
+	def destroy
+		User.delete(params[:id])
+		redirect_to user_index_url
+	end
 
 	private
 	def user_params
