@@ -38,6 +38,8 @@ GEM
     coffee-script-source (1.10.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    haml (4.0.3)
+      tilt
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.4.1)
@@ -54,7 +56,7 @@ GEM
     mime-types-data (3.2016.0221)
     minitest (5.8.4)
     multi_json (1.11.2)
-    mysql2 (0.4.3)
+    mysql2 (0.3.20)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -111,9 +113,10 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  haml (= 4.0.3)
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
+  mysql2 (~> 0.3.20)
   rails (= 4.1.13)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
