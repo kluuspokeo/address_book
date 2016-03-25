@@ -10,7 +10,7 @@
 			%th= "Action"
 	%tbody
 		- @addresses.each do|address|
-			%tr.address
+			%tr.address{ :data => {:user_id => @user.id}}
 				%td= address.street
 				%td= address.city
 				%td= address.state
@@ -39,7 +39,7 @@
 			%th= "Action"
 	%tbody
 		- @phone_numbers.each do|phone_number|
-			%tr.phone_number
+			%tr.phone_number{ :data => {:user_id => @user.id}}
 				%td= phone_number.area_code
 				%td= phone_number.phone_number
 				%td= phone_number.label
@@ -51,7 +51,7 @@
 			%td
 				%input.phone_number{:placeholder => "Phone Number"}
 			%td
-				%input.label{:placeholder => "Label"}
+				%input.label{:placeholder => "Label"} 
 			%td
 				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
 
@@ -63,7 +63,7 @@
 			%th= "Action"
 	%tbody
 		- @email_addresses.each do|email_address|
-			%tr.email_address
+			%tr.email_address{ :data => {:user_id => @user.id}}
 				%td= email_address.email_address
 				%td
 					%a.delete{:href => "#", :data=>{:type => "email_address", :id => email_address.id}}= "x"
