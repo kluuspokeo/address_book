@@ -23,7 +23,7 @@ $(document).ready(function(){
 					case "address":
 					case "phone_number":
 					case "email_address":
-						var _inputs = $('input', _target.parents('.edit_fields')),
+						var _inputs = $('input, select', _target.parents('.edit_fields')),
 							_params = {};
 						_inputs.each(function(i,el){
 							_params[el.className] = el.value;

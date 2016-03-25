@@ -17,9 +17,16 @@ class PhoneNumberController < ApplicationController
 		}
 	end
 
+	def by_label
+		@numbers = PhoneNumbers.where(params.permit(:label))
+		render 'by_label'
+	end
+
+
 	private
 	def phone_number_params
 		params.permit(:area_code, :phone_number, :label, :user_id)
 	end
+
 
 end
