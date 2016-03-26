@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 gem "mysql2", '~> 0.3.20'
 gem 'haml', '4.0.3'
+group :development, :test do
+	gem 'rspec-rails'
+end

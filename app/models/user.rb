@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
 	validates :first_name, presence: true
 	validates :last_name, presence: true
-	has_many :phone_numbers, :class_name => 'PhoneNumbers'
+	
 	has_many :email_address
+	has_many :phone_numbers, :class_name => 'PhoneNumbers'
 	has_many :address
 	#clean up
 	after_destroy { |record| 
@@ -10,4 +11,6 @@ class User < ActiveRecord::Base
 		EmailAddress.delete(user_id: record.id)
 		Address.delete(user_id: record.id)
 	}
+
+
 end
