@@ -1,6 +1,6 @@
 %h1= @user.first_name+" "+@user.last_name
 %h2= "Addresses"
-%table.addresses{ :border => 1, :width => "100%", :class => @addresses.blank? && "empty"}
+%table.addresses{ border:  1, width:  "100%", class:  @addresses.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Street"
@@ -16,7 +16,7 @@
 				%td= address.zip_code
 
 %h2= "Phone Numbers"
-%table.phone_numbers{ :border => 1, :width => "100%", :class => @phone_numbers.blank? && "empty"}
+%table.phone_numbers{ border:  1, width:  "100%", class:  @phone_numbers.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Area Code"
@@ -30,7 +30,7 @@
 				%td= phone_number.label
 
 %h2= "Email Addresses"
-%table.email_addresses{ :border => 1, :width => "100%", :class => @email_addresses.blank? && "empty"}
+%table.email_addresses{ border:  1, width:  "100%", class:  @email_addresses.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Email Address"
@@ -39,6 +39,6 @@
 			%tr.email_address
 				%td= email_address.email_address
 
-= link_to "Back", user_index_url, :title => 'Back'
-= link_to "Edit", edit_user_url, :title => "Edit"
+= link_to "Back", user_index_url, title:  'Back'
+= link_to "Edit", edit_user_url, title:  "Edit"
 = link_to "Delete", @user, method: :delete

@@ -1,7 +1,7 @@
 
-%a= link_to "Add New User", new_user_path, :title => 'Add New User'
+%a= link_to "Add New User", new_user_path, title:  'Add New User'
 
-%table.users{ :border => 1, :width => "100%", :class => @users.blank? && "empty"}
+%table.users{ border:  1, width:  "100%", class:  @users.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Id"
@@ -11,7 +11,7 @@
 			%th= "Delete"
 	%tbody
 		- @users.each do|user|
-			%tr.user{ :data => { :user_id => user.id}}
+			%tr.user{ data: { user_id:  user.id}}
 				%td= link_to user.id, user
 				%td= user.first_name
 				%td= user.last_name

@@ -1,6 +1,6 @@
 %h1= @user.first_name+" "+@user.last_name
 %h2= "Addresses"
-%table.addresses{ :border => 1, :width => "100%"}
+%table.addresses{ border: 1, width: "100%"}
 	%thead
 		%tr
 			%th= "Street"
@@ -10,27 +10,27 @@
 			%th= "Action"
 	%tbody
 		- @addresses.each do|address|
-			%tr.address{ :data => {:user_id => @user.id}}
+			%tr.address{ data: {user_id: @user.id}}
 				%td= address.street
 				%td= address.city
 				%td= address.state
 				%td= address.zip_code
 				%td
-					%a.delete{:href => "#", :data=>{:type => "address", :id => address.id}}= "x"
-		%tr.edit_fields{:data => {:type => "address", :user_id => @user.id}}
+					%a.delete{href: "#", :data=>{type: "address", id: address.id}}= "x"
+		%tr.edit_fields{data: {type: "address", user_id: @user.id}}
 			%td
-				%input.street{:placeholder => "Street"}
+				%input.street{placeholder:  "Street"}
 			%td 
-				%input.city{:placeholder => "City"}
+				%input.city{placeholder:  "City"}
 			%td
-				%input.state{:placeholder => "State"}
+				%input.state{placeholder:  "State"}
 			%td
-				%input.zip_code{:placeholder => "Zip Code"}
+				%input.zip_code{placeholder:  "Zip Code"}
 			%td
-				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
+				%a.edit{href: "#", type: "Submit", value:  "Add"}= "Add"
 
 %h2= "Phone Numbers"
-%table.phone_numbers{ :border => 1, :width => "100%", :class => @phone_numbers.blank? && "empty"}
+%table.phone_numbers{ border:  1, width:  "100%", class: @phone_numbers.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Area Code"
@@ -39,45 +39,45 @@
 			%th= "Action"
 	%tbody
 		- @phone_numbers.each do|phone_number|
-			%tr.phone_number{ :data => {:user_id => @user.id}}
+			%tr.phone_number{ data: {user_id: @user.id}}
 				%td= phone_number.area_code
 				%td= phone_number.phone_number
 				%td= phone_number.label
 				%td
-					%a.delete{:href => "#", :data=>{:type => "phone_number", :id => phone_number.id}}= "x"
-		%tr.edit_fields{:data => {:type => "phone_number", :user_id => @user.id}}
+					%a.delete{href: "#", :data=>{type: "phone_number", id: phone_number.id}}= "x"
+		%tr.edit_fields{data: {type: "phone_number", user_id: @user.id}}
 			%td
-				%input.area_code{:placeholder => "Area Code"}
+				%input.area_code{placeholder:  "Area Code"}
 			%td
-				%input.phone_number{:placeholder => "Phone Number"}
+				%input.phone_number{placeholder:  "Phone Number"}
 			%td
 				%select.label
 				-# TODO: switch from using hardcoded values in future
-					%option{:value => "none"}= "None"
-					%option{:value => "home"}= "Home"
-					%option{:value => "work"}= "Work"
-					%option{:value => "mobile"}= "Mobile"
+					%option{value:  "none"}= "None"
+					%option{value:  "home"}= "Home"
+					%option{value:  "work"}= "Work"
+					%option{value:  "mobile"}= "Mobile"
 			%td
-				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
+				%a.edit{href: "#", type: "Submit", value:  "Add"}= "Add"
 
 %h2= "Email Addresses"
-%table.email_addresses{ :border => 1, :width => "100%", :class => @email_addresses.blank? && "empty"}
+%table.email_addresses{ border:  1, width:  "100%", class: @email_addresses.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Email Address"
 			%th= "Action"
 	%tbody
 		- @email_addresses.each do|email_address|
-			%tr.email_address{ :data => {:user_id => @user.id}}
+			%tr.email_address{ data: {user_id: @user.id}}
 				%td= email_address.email_address
 				%td
-					%a.delete{:href => "#", :data=>{:type => "email_address", :id => email_address.id}}= "x"
-		%tr.edit_fields{:data => {:type => "email_address", :user_id => @user.id}}
+					%a.delete{href: "#", :data=>{type: "email_address", id: email_address.id}}= "x"
+		%tr.edit_fields{data: {type: "email_address", user_id: @user.id}}
 			%td
-				%input.email_address{:placeholder => "Email"}
+				%input.email_address{placeholder:  "Email"}
 			%td
-				%a.edit{:href => "#", :type => "Submit", :value => "Add"}= "Add"
+				%a.edit{href: "#", type: "Submit", value:  "Add"}= "Add"
 
-= link_to "Back", user_index_url, :title => 'Back'
+= link_to "Back", user_index_url, title:  'Back'
 
 = link_to "Delete User", @user, method: :delete
