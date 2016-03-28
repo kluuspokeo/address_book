@@ -13,12 +13,14 @@ describe User do
     end
 
     describe "email" do
-      it "saves good email address" do
+      it "saves and deletes good email address" do
         count = @user.email_address.count.to_i
         email = @user.email_address.new(:email_address => "test@test.com")
         email.save
         expect(count+1).to eql(@user.email_address.count.to_i)
         expect(email.email_address).to eql("test@test.com")
+        @user.email_address.delete(email.id.to_i)
+        expect(count).to eql(@user.email_address.count.to_i)
       end
       it "doesn't save bad email address" do
         count = @user.email_address.count.to_i
@@ -28,7 +30,7 @@ describe User do
     end
 
     describe "phonenumber" do
-      it "saves good phone numbers" do
+      it "saves and deletes good phone numbers" do
         count = @user.phone_numbers.count.to_i
         phone_number = @user.phone_numbers.new(:area_code => 111, :phone_number => 1234567, :label => "home")
         phone_number.save
@@ -36,6 +38,8 @@ describe User do
         expect(phone_number.area_code).to eql(111)
         expect(phone_number.phone_number).to eql(1234567)
         expect(phone_number.label).to eql("home")
+        @user.phone_numbers.delete(phone_number.id.to_i)
+        expect(count).to eql(@user.phone_numbers.count.to_i)
       end
       it "doesn't save phone numbers with bad area code" do
         count = @user.phone_numbers.count.to_i
@@ -51,12 +55,11 @@ describe User do
         count = @user.phone_numbers.count.to_i
         @user.phone_numbers.new(:area_code => 111, :phone_number => 1234567, :label => "blah").save;
         expect(count).to eql(@user.phone_numbers.count.to_i)
-
       end
     end
 
     describe "address" do
-      it "saves good address" do
+      it "saves and deletes good address" do
         count = @user.address.count.to_i
         address = @user.address.new(:street => "123 N. Fake St.", :city => "Fake City", :state => "CA", :zip_code => 12345);
         address.save
@@ -65,6 +68,8 @@ describe User do
         expect(address.city).to eql("Fake City")
         expect(address.state).to eql("CA")
         expect(address.zip_code).to eql(12345)
+        @user.address.delete(address.id.to_i)
+        expect(count).to eql(@user.address.count.to_i)
       end
       it "doesn't save address with bad street" do
         count = @user.address.count.to_i
