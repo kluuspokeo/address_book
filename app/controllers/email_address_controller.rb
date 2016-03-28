@@ -1,7 +1,7 @@
 class EmailAddressController < ApplicationController
 	def destroy
 		render json: {
-			:status => EmailAddress.delete(params[:id])
+			status: EmailAddress.delete(params[:id])
 		}
 	end
 	def create
@@ -12,8 +12,8 @@ class EmailAddressController < ApplicationController
 			msg = e.message
 		end
 		render json: {
-			:status => status.to_s,
-			:message => msg
+			status: status.to_s,
+			message: msg
 		}
 	end
 	private

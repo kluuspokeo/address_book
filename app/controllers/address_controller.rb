@@ -1,7 +1,7 @@
 class AddressController < ApplicationController
 	def destroy
 		render json: {
-			:status => Address.delete(params[:id])
+			status: Address.delete(params[:id])
 		}
 	end
 	def create
@@ -12,8 +12,8 @@ class AddressController < ApplicationController
 			msg = e.message
 		end
 		render json: {
-			:status => status.to_s,
-			:message => msg
+			status: status.to_s,
+			message: msg
 		}
 	end
 	private

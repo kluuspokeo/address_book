@@ -1,7 +1,7 @@
 class PhoneNumberController < ApplicationController
 	def destroy
 		render json: {
-			:status => PhoneNumbers.delete(params[:id])
+			status: PhoneNumbers.delete(params[:id])
 		}
 	end
 	def create
@@ -12,8 +12,8 @@ class PhoneNumberController < ApplicationController
 			msg = e.message
 		end
 		render json: {
-			:status => status.to_s,
-			:message => msg
+			status: status.to_s,
+			message: msg
 		}
 	end
 
