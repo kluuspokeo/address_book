@@ -18,7 +18,7 @@ class PhoneNumberController < ApplicationController
 	end
 
 	def by_label
-		@numbers = PhoneNumbers.where(params.permit(:label))
+		@numbers = PhoneNumbers.by_label params[:label]
 		render 'by_label'
 	end
 
