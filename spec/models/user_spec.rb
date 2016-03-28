@@ -9,6 +9,8 @@ describe User do
       it "saves correct first and last name" do
         expect(@user.first_name).to eql("kevin")
         expect(@user.last_name).to eql("luu")
+        expect(@user.first_name).to_not eql("keevviinn")
+        expect(@user.last_name).to_not eql("luuu")
       end 
     end
 
