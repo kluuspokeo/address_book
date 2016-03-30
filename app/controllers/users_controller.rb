@@ -5,7 +5,6 @@ protect_from_forgery :except => :create
 	end
 
 	def new
-		@csrf_token = form_authenticity_token
 	end
 
 	def create

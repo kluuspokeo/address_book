@@ -43,3 +43,6 @@ gem 'haml', '4.0.3'
 group :development, :test do
 	gem 'rspec-rails'
 end
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

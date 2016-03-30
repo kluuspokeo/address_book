@@ -1,14 +1,13 @@
 %h1= "Add New User"
 
 %form.new_user_form{ action:  "/user", method:  "post"}
-	%fieldset.error{class:  @error.blank? && "empty"}
-		%legend Error
-		%p= @error
-	%input{ type:  "hidden", name:  "authenticity_token", value:  @csrf_token}
-	%fieldset
-		%legend= "User"
-		%input{ type:  "text", name:  "user[first_name]", placeholder:  "First Name", required:  true} *
-		%input{ type:  "text", name:  "user[last_name]", placeholder:  "Last Name", required:  true} *
+	%input{ type:  "hidden", name:  "authenticity_token", value: request_forgery_protection_token}
+	%div.form-group
+		%label First Name *
+		%input.form-control{ type:  "text", name:  "user[first_name]", placeholder:  "First Name", required:  true}
+	%div.form-group
+		%label Last Name *
+		%input.form-control{ type:  "text", name:  "user[last_name]", placeholder:  "Last Name", required:  true}
 
 	%fieldset
 		%legend Address(es)
@@ -21,32 +20,32 @@
 
 	%fieldset
 		%legend Email Address(es)
-		%a.add{href:  "#", data:  {template:  "email_address_template"}} Add Email Address
+		%a.add{href:  "#", data: {template:  "email_address_template"}} Add Email Address
 
-	%input{ type:  "submit", value:  "Submit"}
+	%input.btn.btn-primary{ type:  "submit", value:  "Submit"}
 
 
-%script{ type:  "type/html", id:  "address_template"}
-	%div
-		%input{ type:  "text", name:  "addresses[][street]", placeholder:  "Street"}
-		%input{ type:  "text", name:  "addresses[][city]", placeholder:  "City"}
-		%input{ type:  "text", name:  "addresses[][state]", placeholder:  "State", pattern:  "[A-Za-z]{2}"}
-		%input{ type:  "text", name:  "addresses[][zip_code]", placeholder:  "Zip Code", pattern:  "\\d{5}"}
+%script{ type: "type/html", id: "address_template"}
+	%div.form-group
+		%input.form-control{ type:  "text", name:  "addresses[][street]", placeholder:  "Street"}
+		%input.form-control{ type:  "text", name:  "addresses[][city]", placeholder:  "City"}
+		%input.form-control{ type:  "text", name:  "addresses[][state]", placeholder:  "State", pattern:  "[A-Za-z]{2}"}
+		%input.form-control{ type:  "text", name:  "addresses[][zip_code]", placeholder:  "Zip Code", pattern:  "\\d{5}"}
 		%a.close{href:  "#"} x
 		%hr
 
-%script{ type:  "type/html",  id:  "phone_number_template"}
-	%div
-		%input{ type:  "text", name:  "phone_numbers[][area_code]", placeholder:  "Area Code", pattern:  "\\d{3}"}
-		%input{ type:  "text", name:  "phone_numbers[][phone_number]", placeholder:  "Phone Number", pattern:  "\\d{7}"}
+%script{ type: "type/html",  id: "phone_number_template"}
+	%div.form-group
+		%input.form-control{ type:  "text", name:  "phone_numbers[][area_code]", placeholder:  "Area Code", pattern:  "\\d{3}"}
+		%input.form-control{ type:  "text", name:  "phone_numbers[][phone_number]", placeholder:  "Phone Number", pattern:  "\\d{7}"}
 		%a.close{href:  "#"} x
 		%hr
 
-%script{ type:  "type/html",  id:  "email_address_template"}
-	%div
-		%input{ type:  "email", name:  "email_addresses[][email_address]", placeholder:  "Email Address" }
+%script{ type: "type/html",  id: "email_address_template"}
+	%div.form-group
+		%input.form-control{ type:  "email", name:  "email_addresses[][email_address]", placeholder:  "Email Address" }
 		%a.close{href:  "#"} x
 		%hr
 
 
-= link_to "Back", user_index_url
+=link_to "Back", users_url, class: "btn btn-primary"

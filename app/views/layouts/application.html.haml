@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+%html{lang: "en"}
+  %title KL Address Book
+  =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true
+  =csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default
+      %a.navbar-brand{href: "/"} Home
+    %div.container
+      =yield

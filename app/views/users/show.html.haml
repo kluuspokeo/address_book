@@ -1,6 +1,6 @@
-%h1= @user.first_name+" "+@user.last_name
-%h2 Addresses
-%table.addresses{ border:  1, width:  "100%", class:  @user.addresses.blank? && "empty"}
+%h2= @user.first_name+" "+@user.last_name
+%h3 Address(es)
+%table.table.table-bordered.addresses
 	%thead
 		%tr
 			%th Street
@@ -15,8 +15,8 @@
 				%td= address.state
 				%td= address.zip_code
 
-%h2 Phone Numbers
-%table.phone_numbers{ border:  1, width:  "100%", class:  @user.phone_numbers.blank? && "empty"}
+%h3 Phone Number(s)
+%table.table.table-bordered.phone_numbers
 	%thead
 		%tr
 			%th Area Code
@@ -29,8 +29,8 @@
 				%td= phone_number.phone_number
 				%td= phone_number.label
 
-%h2 Email Addresses
-%table.email_addresses{ border:  1, width:  "100%", class:  @user.email_addresses.blank? && "empty"}
+%h3 Email Address(es)
+%table.table.table-bordered.email_addresses
 	%thead
 		%tr
 			%th Email Address
@@ -39,6 +39,6 @@
 			%tr.email_address
 				%td= email_address.email_address
 
-= link_to "Back", user_url, title:  'Back'
-= link_to "Edit", edit_user_url, title:  "Edit"
-= link_to "Delete", @user, method: :delete
+= link_to "Back", user_url, title:  'Back', class: "btn btn-primary"
+= link_to "Edit", edit_user_url, title:  "Edit", class: "btn btn-warning"
+= link_to "Delete", @user, method: :delete, class: "btn btn-danger"
