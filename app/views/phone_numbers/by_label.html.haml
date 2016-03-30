@@ -1,0 +1,16 @@
+%table.users{ border:  1, width:  "100%", class:  @numbers.blank? && "empty"}
+	%thead
+		%tr
+			%th= "User Id"
+			%th= "Area Code"
+			%th= "Phone Number"
+			%th= "Label"
+	%tbody
+		- @numbers.each do|number|
+			%tr.number
+				%td
+					%a{href:  "/user/"+number.user_id.to_s}= number.user_id.to_s
+				%td= number.area_code
+				%td= number.phone_number
+				%td= number.label
+

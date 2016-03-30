@@ -1,0 +1,44 @@
+%h2= @user.first_name+" "+@user.last_name
+%h3 Address(es)
+%table.table.table-bordered.addresses
+	%thead
+		%tr
+			%th Street
+			%th City
+			%th State
+			%th Zip Code
+	%tbody
+		- @user.addresses.each do|address|
+			%tr.address
+				%td= address.street
+				%td= address.city
+				%td= address.state
+				%td= address.zip_code
+
+%h3 Phone Number(s)
+%table.table.table-bordered.phone_numbers
+	%thead
+		%tr
+			%th Area Code
+			%th Phone Number
+			%th Label
+	%tbody
+		- @user.phone_numbers.each do|phone_number|
+			%tr.phone_number
+				%td= phone_number.area_code
+				%td= phone_number.phone_number
+				%td= phone_number.label
+
+%h3 Email Address(es)
+%table.table.table-bordered.email_addresses
+	%thead
+		%tr
+			%th Email Address
+	%tbody
+		- @user.email_addresses.each do|email_address|
+			%tr.email_address
+				%td= email_address.email_address
+
+= link_to "Back", user_url, title:  'Back', class: "btn btn-primary"
+= link_to "Edit", edit_user_url, title:  "Edit", class: "btn btn-warning"
+= link_to "Delete", @user, method: :delete, class: "btn btn-danger"
