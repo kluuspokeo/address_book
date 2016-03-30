@@ -16,7 +16,7 @@
 				%td= address.state
 				%td= address.zip_code
 				%td
-					%a.delete{href: "#", :data=>{type: "address", id: address.id}}= "x"
+					%a.delete{href: "#", :data=>{type: "address", id: address.id}} x
 		%tr.edit_fields{data: {type: "address", user_id: @user.id}}
 			%td
 				%input.street{placeholder:  "Street"}
@@ -44,7 +44,7 @@
 				%td= phone_number.phone_number
 				%td= phone_number.label
 				%td
-					%a.delete{href: "#", :data=>{type: "phone_number", id: phone_number.id}}= "x"
+					%a.delete{href: "#", :data=>{type: "phone_number", id: phone_number.id}} x
 		%tr.edit_fields{data: {type: "phone_number", user_id: @user.id}}
 			%td
 				%input.area_code{placeholder:  "Area Code"}
@@ -71,7 +71,7 @@
 			%tr.email_address{ data: {user_id: @user.id}}
 				%td= email_address.email_address
 				%td
-					%a.delete{href: "#", :data=>{type: "email_address", id: email_address.id}}= "x"
+					%a.delete{href: "#", :data=>{type: "email_address", id: email_address.id}} x
 		%tr.edit_fields{data: {type: "email_address", user_id: @user.id}}
 			%td
 				%input.email_address{placeholder:  "Email"}
