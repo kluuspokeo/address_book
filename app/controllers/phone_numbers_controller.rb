@@ -1,4 +1,4 @@
-class PhoneNumberController < ApplicationController
+class PhoneNumbersController < ApplicationController
 	def destroy
 		render json: {
 			status: PhoneNumbers.delete(params[:id])

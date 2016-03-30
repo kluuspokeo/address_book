@@ -45,12 +45,8 @@ protect_from_forgery :except => :create
 
 
 	def show
-		@user = User.find(params[:id])
-		if @user
-			@addresses = Address.where(user_id: params[:id])
-			@phone_numbers = PhoneNumbers.where(user_id: params[:id])
-			@email_addresses = EmailAddress.where(user_id: params[:id])
-		end
+		@user = User.where(params.permit(:id)).includes(:addresses, :phone_numbers, :email_addresses).first
+		redirect_to user_index_url if !@user
 	end
 
 	def destroy

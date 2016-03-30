@@ -1,4 +1,4 @@
-class EmailAddressController < ApplicationController
+class EmailAddressesController < ApplicationController
 	def destroy
 		render json: {
 			status: EmailAddress.delete(params[:id])
