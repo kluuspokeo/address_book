@@ -29,7 +29,7 @@ $(document).ready(function(){
 					_params[el.className] = el.value;
 				});
 				$.ajax({
-					"url": "/user/"+_user_id+"/"+_type,
+					"url": "/users/"+_user_id+"/"+_type,
 					"method": "POST",
 					"data": _params,
 					"dataType": "JSON",
@@ -57,7 +57,7 @@ $(document).ready(function(){
 				case "email_address":
 				if(confirm("Are you sure?")) {
 					$.ajax({
-						"url": "/user/"+_user_id+"/"+_type+"/"+_id,
+						"url": "/users/"+_user_id+"/"+_type+"/"+_id,
 						"method": "DELETE",
 						"success": function(d){
 							_target.parents('.'+_type).fadeOut(250);

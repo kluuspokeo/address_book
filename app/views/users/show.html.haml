@@ -1,6 +1,6 @@
 %h1= @user.first_name+" "+@user.last_name
 %h2= "Addresses"
-%table.addresses{ border:  1, width:  "100%", class:  @addresses.blank? && "empty"}
+%table.addresses{ border:  1, width:  "100%", class:  @user.addresses.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Street"
@@ -8,7 +8,7 @@
 			%th= "State"
 			%th= "Zip Code"
 	%tbody
-		- @addresses.each do|address|
+		- @user.addresses.each do|address|
 			%tr.address
 				%td= address.street
 				%td= address.city
@@ -16,29 +16,29 @@
 				%td= address.zip_code
 
 %h2= "Phone Numbers"
-%table.phone_numbers{ border:  1, width:  "100%", class:  @phone_numbers.blank? && "empty"}
+%table.phone_numbers{ border:  1, width:  "100%", class:  @user.phone_numbers.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Area Code"
 			%th= "Phone Number"
 			%th= "Label"
 	%tbody
-		- @phone_numbers.each do|phone_number|
+		- @user.phone_numbers.each do|phone_number|
 			%tr.phone_number
 				%td= phone_number.area_code
 				%td= phone_number.phone_number
 				%td= phone_number.label
 
 %h2= "Email Addresses"
-%table.email_addresses{ border:  1, width:  "100%", class:  @email_addresses.blank? && "empty"}
+%table.email_addresses{ border:  1, width:  "100%", class:  @user.email_addresses.blank? && "empty"}
 	%thead
 		%tr
 			%th= "Email Address"
 	%tbody
-		- @email_addresses.each do|email_address|
+		- @user.email_addresses.each do|email_address|
 			%tr.email_address
 				%td= email_address.email_address
 
-= link_to "Back", user_index_url, title:  'Back'
+= link_to "Back", user_url, title:  'Back'
 = link_to "Edit", edit_user_url, title:  "Edit"
 = link_to "Delete", @user, method: :delete

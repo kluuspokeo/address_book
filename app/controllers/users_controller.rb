@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 protect_from_forgery :except => :create 
 	def index
 		@users = User.all
