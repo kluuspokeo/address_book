@@ -4,11 +4,11 @@
 %table.users{ border:  1, width:  "100%", class:  @users.blank? && "empty"}
 	%thead
 		%tr
-			%th= "Id"
-			%th= "First Name"
-			%th= "Last Name"
-			%th= "Last Updated"
-			%th= "Delete"
+			%th "Id"
+			%th "First Name"
+			%th "Last Name"
+			%th "Last Updated"
+			%th "Delete"
 	%tbody
 		- @users.each do|user|
 			%tr.user{ data: { user_id:  user.id}}

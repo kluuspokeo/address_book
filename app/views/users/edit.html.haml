@@ -1,13 +1,13 @@
 %h1= @user.first_name+" "+@user.last_name
-%h2= "Addresses"
+%h2 Addresses
 %table.addresses{ border: 1, width: "100%"}
 	%thead
 		%tr
-			%th= "Street"
-			%th= "City"
-			%th= "State"
-			%th= "Zip Code"
-			%th= "Action"
+			%th Street
+			%th City
+			%th State
+			%th Zip Code
+			%th Action
 	%tbody
 		- @user.addresses.each do|address|
 			%tr.address{ data: {user_id: @user.id}}
@@ -27,16 +27,16 @@
 			%td
 				%input.zip_code{placeholder:  "Zip Code"}
 			%td
-				%a.edit{href: "#", type: "Submit", value:  "Add"}= "Add"
+				%a.edit{href: "#", type: "Submit", value:  "Add"} "Add"
 
-%h2= "Phone Numbers"
+%h2 Phone Numbers
 %table.phone_numbers{ border:  1, width:  "100%", class: @user.phone_numbers.blank? && "empty"}
 	%thead
 		%tr
-			%th= "Area Code"
-			%th= "Phone Number"
-			%th= "Label"
-			%th= "Action"
+			%th Area Code
+			%th Phone Number
+			%th Label
+			%th Action
 	%tbody
 		- @user.phone_numbers.each do|phone_number|
 			%tr.phone_number{ data: {user_id: @user.id}}
@@ -53,19 +53,19 @@
 			%td
 				%select.label
 				-# TODO: switch from using hardcoded values in future
-					%option{value:  "none"}= "None"
-					%option{value:  "home"}= "Home"
-					%option{value:  "work"}= "Work"
-					%option{value:  "mobile"}= "Mobile"
+					%option{value:  "none"} None
+					%option{value:  "home"} Home
+					%option{value:  "work"} Work
+					%option{value:  "mobile"} Mobile
 			%td
 				%a.edit{href: "#", type: "Submit", value:  "Add"}= "Add"
 
-%h2= "Email Addresses"
+%h2 Email Addresses
 %table.email_addresses{ border:  1, width:  "100%", class: @user.email_addresses.blank? && "empty"}
 	%thead
 		%tr
-			%th= "Email Address"
-			%th= "Action"
+			%th Email Address
+			%th Action
 	%tbody
 		- @user.email_addresses.each do|email_address|
 			%tr.email_address{ data: {user_id: @user.id}}
